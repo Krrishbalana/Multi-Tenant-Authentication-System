@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./routes/PrivateRoute";
 import Navbar from "./components/Navbar";
+import AdminDashboard from "./pages/AdminDashboard";
+import SuperAdminDashboard from "./pages/SuperAdminDashboard";
 
 function App() {
   return (
@@ -27,6 +29,34 @@ function App() {
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute requiredRole={["admin", "superadmin"]}>
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/superadmin"
+            element={
+              <PrivateRoute requiredRole="superadmin">
+                <SuperAdminDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Redirect root "/" to dashboard or login based on auth */}
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Navigate to="/dashboard" replace />
               </PrivateRoute>
             }
           />
