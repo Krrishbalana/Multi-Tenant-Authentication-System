@@ -38,6 +38,27 @@ const Navbar = () => {
               >
                 Dashboard
               </Link>
+
+              {/* Show Admin link only for admin and superadmin */}
+              {(user.role === "admin" || user.role === "superadmin") && (
+                <Link
+                  to="/admin"
+                  className="px-3 py-1 rounded hover:bg-gray-700 transition-colors"
+                >
+                  Admin
+                </Link>
+              )}
+
+              {/* Show Superadmin link only for superadmin */}
+              {user.role === "superadmin" && (
+                <Link
+                  to="/superadmin"
+                  className="px-3 py-1 rounded hover:bg-gray-700 transition-colors"
+                >
+                  Super Admin
+                </Link>
+              )}
+
               <button
                 onClick={logout}
                 className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white font-semibold transition-colors"
