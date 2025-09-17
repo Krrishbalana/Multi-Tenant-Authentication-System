@@ -29,7 +29,7 @@ const Login = ({ toggleForm }) => {
     <div className="flex justify-center items-center min-h-screen  font-sans text-black">
       <form
         onSubmit={handleSubmit}
-        className="bg-neutral-100 p-8 rounded-xl shadow-md w-96 space-y-6 mt-6 shadow-lg"
+        className="bg-neutral-100 p-8 rounded-xl w-96 space-y-6 mt-6 shadow-lg"
       >
         <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
 
