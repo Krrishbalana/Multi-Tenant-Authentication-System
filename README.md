@@ -18,6 +18,28 @@ This is the React frontend application for a role-based multi-tenant system with
 
 ---
 
+## Screenshots
+
+### Signup Page
+
+![Signup](public/Screenshot%202025-09-17%20at%204.03.26 PM.png)
+
+### Login Page
+
+![Login](public/Screenshot%202025-09-17%20at%204.03.40 PM.png)
+
+### User Dashboard
+
+![User Dashboard](public/Screenshot%202025-09-17%20at%204.03.58 PM.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](public/Screenshot%202025-09-17%20at%204.06.11 PM.png)
+
+### Super Admin Dashboard
+
+![Super Admin Dashboard](public/Screenshot%202025-09-17%20at%204.05.11 PM.png)
+
 ## Prerequisites
 
 - Node.js and npm installed
