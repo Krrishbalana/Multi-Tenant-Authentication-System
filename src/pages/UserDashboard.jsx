@@ -23,17 +23,15 @@ const UserDashboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 p-8 text-gray-200">
-      <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-xl shadow-md">
-        <h2 className="text-4xl font-bold mb-6 text-cyan-400">
-          User Dashboard
-        </h2>
+    <div className="min-h-screen bg-white p-8 font-sans text-black">
+      <div className="max-w-4xl mx-auto bg-neutral-50 p-8 rounded-xl shadow-md">
+        <h2 className="text-4xl font-bold mb-6 text-black">User Dashboard</h2>
 
-        {loading && <p>Loading your profile...</p>}
-        {error && <p className="text-red-500">Error: {error}</p>}
+        {loading && <p className="text-gray-600">Loading your profile...</p>}
+        {error && <p className="text-red-600">Error: {error}</p>}
 
         {!loading && !error && userData && (
-          <div className="space-y-4">
+          <div className="space-y-4 text-lg">
             <p>
               <strong>Name:</strong> {userData.name}
             </p>

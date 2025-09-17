@@ -22,24 +22,24 @@ const SuperAdminDashboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 p-8">
-      <div className="max-w-5xl mx-auto bg-gray-800 p-6 rounded-xl shadow-md text-gray-200">
-        <h2 className="text-4xl font-bold mb-8 text-cyan-400">
-          Super Admin Dashboard
-        </h2>
+    <div className="min-h-screen bg-white p-8 font-sans text-black">
+      <div className="max-w-5xl mx-auto bg-neutral-50 p-8 rounded-xl shadow-md">
+        <h2 className="text-4xl font-bold mb-8">Super Admin Dashboard</h2>
 
-        {loading && <p>Loading tenants...</p>}
-        {error && <p className="text-red-500">Error: {error}</p>}
-        {!loading && !error && tenants.length === 0 && <p>No tenants found.</p>}
+        {loading && <p className="text-gray-600">Loading tenants...</p>}
+        {error && <p className="text-red-600">Error: {error}</p>}
+        {!loading && !error && tenants.length === 0 && (
+          <p className="text-gray-600">No tenants found.</p>
+        )}
 
         <ul className="space-y-4">
           {tenants.map(({ tenantId, name }) => (
             <li
               key={tenantId}
-              className="bg-gray-700 p-4 rounded-md shadow-sm flex justify-between items-center"
+              className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm flex justify-between items-center"
             >
               <span className="text-lg font-semibold">{name}</span>
-              <span className="text-sm text-gray-400">ID: {tenantId}</span>
+              <span className="text-sm text-gray-500">ID: {tenantId}</span>
             </li>
           ))}
         </ul>

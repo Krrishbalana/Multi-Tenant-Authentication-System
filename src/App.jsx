@@ -4,8 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -19,9 +18,10 @@ function App() {
       <AuthProvider>
         <Navbar /> {/* Navbar visible on all pages */}
         <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          {/* Public Route: Combined AuthPage for Login & Signup */}
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<Navigate to="/auth" replace />} />
+          <Route path="/signup" element={<Navigate to="/auth" replace />} />
 
           {/* Private Route (only logged-in users) */}
           <Route
@@ -62,7 +62,7 @@ function App() {
           />
 
           {/* Default Redirect */}
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/auth" replace />} />
         </Routes>
       </AuthProvider>
     </Router>

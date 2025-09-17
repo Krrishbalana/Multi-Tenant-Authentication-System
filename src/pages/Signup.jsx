@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ toggleForm }) => {
   const { signup } = useAuth();
-  const navigate = useNavigate();
 
   const [tenantId, setTenantId] = useState("");
   const [email, setEmail] = useState("");
@@ -29,81 +27,121 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen font-sans text-black">
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-800 p-8 rounded-xl shadow-md w-96 text-gray-200"
+        className="bg-neutral-100 p-8 rounded-xl shadow-md w-96 space-y-6 mt-6 shadow-lg"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center text-cyan-400">
-          Signup
-        </h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Signup</h2>
 
         {error && (
-          <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+          <p className="text-red-600 text-sm mb-4 text-center">{error}</p>
         )}
 
-        <div className="mb-4">
-          <p className="text-sm font-medium text-gray-300 mb-1">Tenant ID</p>
+        <div>
+          <label className="block font-semibold mb-1" htmlFor="tenantId">
+            Tenant ID
+          </label>
           <input
+            id="tenantId"
             type="text"
             placeholder="Enter Tenant ID"
             value={tenantId}
             onChange={(e) => setTenantId(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-black 
+                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                       transition duration-500"
             required
           />
         </div>
 
-        <div className="mb-4">
-          <p className="text-sm font-medium text-gray-300 mb-1">Email</p>
+        <div>
+          <label className="block font-semibold mb-1" htmlFor="email">
+            Email
+          </label>
           <input
+            id="email"
             type="email"
             placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-black 
+                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                       transition duration-500"
             required
           />
         </div>
 
-        <div className="mb-4">
-          <p className="text-sm font-medium text-gray-300 mb-1">Password</p>
+        <div>
+          <label className="block font-semibold mb-1" htmlFor="password">
+            Password
+          </label>
           <input
+            id="password"
             type="password"
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-black 
+                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                       transition duration-500"
             required
           />
         </div>
 
-        <div className="mb-6">
-          <p className="text-sm font-medium text-gray-300 mb-1">
+        <div>
+          <label className="block font-semibold mb-1" htmlFor="confirmPassword">
             Confirm Password
-          </p>
+          </label>
           <input
+            id="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-black 
+                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                       transition duration-500"
             required
           />
         </div>
 
-        <button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 rounded-lg transition-colors">
-          Signup
+        {/* Animated Submit Button */}
+        <button
+          type="submit"
+          className="relative w-full bg-gray-500 text-black rounded-xl px-6 py-2 overflow-hidden 
+                     group transition duration-500 hover:bg-gray-600 focus:outline-none"
+        >
+          <span className="relative z-10 font-semibold transition-colors duration-500 group-hover:text-white">
+            Signup
+          </span>
+
+          <div className="absolute inset-0 bg-black flex items-center justify-start transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
+            <svg
+              className="w-6 h-6 ml-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
         </button>
 
-        <p className="mt-4 text-sm text-center text-gray-300">
+        <p className="text-center text-sm mt-6">
           Already have an account?{" "}
-          <span
-            className="text-cyan-400 hover:underline cursor-pointer"
-            onClick={() => navigate("/login")}
+          <button
+            type="button"
+            className="text-blue-500 hover:underline cursor-pointer"
+            onClick={toggleForm}
           >
             Login
-          </span>
+          </button>
         </p>
       </form>
     </div>

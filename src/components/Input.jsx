@@ -3,7 +3,7 @@ import React from "react";
 function Input({ label, type = "text", value, onChange, placeholder }) {
   return (
     <div className="mb-6">
-      <label className="block text-gray-300 text-sm font-medium mb-2">
+      <label className="block text-black text-sm font-semibold mb-2">
         {label}
       </label>
       <input
@@ -11,10 +11,11 @@ function Input({ label, type = "text", value, onChange, placeholder }) {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full px-4 py-3 bg-gray-700 text-gray-200 placeholder-gray-400 
-                   rounded-xl shadow-sm border border-gray-600 
-                   focus:outline-none focus:ring-2 focus:ring-cyan-500 
-                   transition-all duration-200"
+        className="w-full px-4 py-3 bg-white text-black placeholder-gray-400 
+                   rounded-xl border border-gray-300 shadow-sm 
+                   focus:outline-none focus:ring-2 focus:ring-blue-400 
+                   transition duration-500"
+        autoComplete="off"
       />
     </div>
   );
